@@ -22,7 +22,7 @@ public class PoliceListener implements Listener {
     		Player damageeP = (Player) damageeE;
     		//damager is the police
     		//damagee is the criminal
-    		if (work.alreadyPolice(damagerP.getUniqueId().toString()) && worker.TestForItem(damagerP, Material.BLAZE_ROD, "Police")) /*put stuff here too) */ {
+    		if (work.alreadyPolice(damagerP.getUniqueId().toString(), /*add region name from worldguard api */, damagerP.getWorld().getName(); ) && worker.TestForItem(damagerP, Material.BLAZE_ROD, "Police")) /*put stuff here too) */ {
     			System.out.println("A player has been arrested");
     			damagerP.sendMessage("You have arrested "+ damageeP.getName());
     			damageeP.sendMessage("You have been arrested");
