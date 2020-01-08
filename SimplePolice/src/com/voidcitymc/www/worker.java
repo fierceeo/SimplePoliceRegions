@@ -1,3 +1,14 @@
+		/*
+List<String> configList = (List<String>)plugin.getConfig().getList("List");
+configList.add(args[0]);
+plugin.getConfig().set("List", configList);
+		 */
+
+
+
+
+
+
 //Need to write to the config like this:
 /*
 
@@ -14,6 +25,7 @@ then list of all regions player  is attached to
 
 package com.voidcitymc.www;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -40,38 +52,35 @@ public String playerToString (Player player) {
 	return player.toString();
 }
 
-public void addPolice (String uuid) {
-	if (alreadyPolice(uuid)) {
+public void addPolice (String uuid, String regionName) {
+	if (alreadyPolice(uuid, regionName)) {
 		return;
-	} else if (!alreadyPolice(uuid)) {
-		Main.getInstance().getConfig().addDefault(uuid, true);
-		Main.getInstance().saveConfig();
-		Main.getInstance().getConfig().options().copyDefaults(true);
-		Main.getInstance().saveConfig();
+	} else if (!alreadyPolice(uuid, regionName)) {
+		
+		List<String> configList = (List<String>)Main.Data.getList(uuid);
+		configList.add(regionName);
+		Main.Data.set(uuid, configList);
+		
+		
+		Main.Data.addDefault(uuid, true);
+/////		
+		//Save This CONFIG!!!
+		
+		
+/*		Main.getInstance().getConfig().options().copyDefaults(true);
+		Main.getInstance().saveConfig(); */
 		return;
 	} else {
 		return;
 	}
 }
 
-public void addPlayerToRegion (String region, String UUID) {
-	List<String> configList = (List<String>)Main.Data.getList(UUID);
-	configList.add(region);
-	Main.Data.set(UUID, configList);
-	
-}
 
+	
 public boolean alreadyPolice (String uuid, String regionName) {
 	List<String> configList = (List<String>)Main.Data.getList("List");
 
-	if (Main.Data.getBoolean(uuid) && configList.contains(regionName)) {
-		
-		/*
-List<String> configList = (List<String>)plugin.getConfig().getList("List");
-configList.add(args[0]);
-plugin.getConfig(),set("List", configList);
-		 */
-		
+	if (Main.Data.getBoolean(uuid) && configList.contains(regionName)) {		
 		return true;
 	} else {
 		return false;
@@ -79,10 +88,17 @@ plugin.getConfig(),set("List", configList);
 
 }
 
-public void removePolice(String uuid) {
+public void removePolice(String uuid, String regionName) {
 	worker testPoliceVar = new worker();
-	if (testPoliceVar.alreadyPolice(uuid)) {
-		Main.getInstance().getConfig().addDefault(uuid, false);
+	if (testPoliceVar.alreadyPolice(uuid, regionName)) {
+		Main.Data.addDefault(uuid, false);
+		
+		List<String> configList = (List<String>)Main.Data.getList(uuid);
+		configList.remove(regionName);
+		Main.Data.set(uuid, configList);
+		
+		
+		//need to find the save config method of the custom config
 		Main.getInstance().saveConfig();
 		return;
 	} else {
