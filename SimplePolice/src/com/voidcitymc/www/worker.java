@@ -27,11 +27,9 @@ package com.voidcitymc.www;
 
 import java.io.IOException;
 import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-
 
 public class worker {
 	
@@ -43,11 +41,12 @@ public static boolean TestForItem(Player p, Material item, String DisplayName) {
             return true;
         }
         return false;
-    }
+}
 
 public String playerToUUID (String player) {
 	return Bukkit.getPlayer(player).getUniqueId().toString();
 }
+
 public String playerToString (Player player) {
 	return player.toString();
 }
