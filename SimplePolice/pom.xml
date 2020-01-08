@@ -36,7 +36,19 @@
    <!-- worldguard ^ -->
   
   
+  <!-- worldedit v -->
+<repository>
+  <id>enginehub-maven</id>
+  <url>http://maven.enginehub.org/repo/</url>
+</repository>
   
+<dependency>
+  <groupId>com.sk89q.worldedit</groupId>
+  <artifactId>worldedit-bukkit</artifactId>
+  <version>7.0.0-SNAPSHOT</version>
+</dependency>
+  
+   <!-- worldedit ^ -->
   
     <!--This adds the Spigot API artifact to the build -->
     <dependency>
