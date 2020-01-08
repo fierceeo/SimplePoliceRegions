@@ -18,7 +18,7 @@ plugin.getConfig().set("List", configList);
 
 then list of all regions player  is attached to
 
-   - player3 = __global__, spawn, wild
+   - player3+worldname = __global__, spawn, wild
 
 
 */
@@ -52,19 +52,20 @@ public String playerToString (Player player) {
 	return player.toString();
 }
 
-public void addPolice (String uuid, String regionName) {
-	if (alreadyPolice(uuid, regionName)) {
+public void addPolice (String uuid, String regionName, String world) {
+	if (alreadyPolice(uuid, regionName, world)) {
 		return;
-	} else if (!alreadyPolice(uuid, regionName)) {
+	} else if (!alreadyPolice(uuid, regionName, world)) {
 		
-		List<String> configList = (List<String>)Main.Data.getList(uuid);
+		List<String> configList = (List<String>)Main.Data.getList(uuid+world);
 		configList.add(regionName);
-		Main.Data.set(uuid, configList);
+		Main.Data.set(uuid+world, configList);
+		//Saves the list ^
 		
-		
+		//Puts uuid = true
 		Main.Data.addDefault(uuid, true);
 /////		
-		//Save This CONFIG!!!
+		//Need To Add Method Save This CONFIG!!!
 		
 		
 /*		Main.getInstance().getConfig().options().copyDefaults(true);
@@ -77,8 +78,8 @@ public void addPolice (String uuid, String regionName) {
 
 
 	
-public boolean alreadyPolice (String uuid, String regionName) {
-	List<String> configList = (List<String>)Main.Data.getList("List");
+public boolean alreadyPolice (String uuid, String regionName, String world) {
+	List<String> configList = (List<String>)Main.Data.getList(uuid+world);
 
 	if (Main.Data.getBoolean(uuid) && configList.contains(regionName)) {		
 		return true;
@@ -88,14 +89,14 @@ public boolean alreadyPolice (String uuid, String regionName) {
 
 }
 
-public void removePolice(String uuid, String regionName) {
+public void removePolice(String uuid, String regionName, String world) {
 	worker testPoliceVar = new worker();
-	if (testPoliceVar.alreadyPolice(uuid, regionName)) {
-		Main.Data.addDefault(uuid, false);
-		
-		List<String> configList = (List<String>)Main.Data.getList(uuid);
+	if (testPoliceVar.alreadyPolice(uuid, regionName, world)) {
+		Main.Data.addDefault(uuid, null);
+//if null dosent work change it back to false
+		List<String> configList = (List<String>)Main.Data.getList(uuid+world);
 		configList.remove(regionName);
-		Main.Data.set(uuid, configList);
+		Main.Data.set(uuid+world, configList);
 		
 		
 		//need to find the save config method of the custom config
@@ -111,6 +112,3 @@ public void removePolice(String uuid, String regionName) {
 
 
 }
-
-
-// https://www.spigotmc.org/threads/getconfig-outside-main-class.117854/?__cf_chl_jschl_tk__=243e49cdca59cc0a8fcc1edf2aaaf25be23203d5-1575926286-0-Aalx2i7iXifBWc6XR9i3zRp88ZD4TfVHYda2ZJLBKOLE2YlAdqbaipspC3mhjzy1svz_ygInJM9NKggkxB6Q4PismhSL4HB2Q1ggEvPXVTGViINkQqHQJCM9IoYVPuPvJD_JHfToN5wM1uiIZyjyaUjHZ0Ulxv5irwajC3_4u6E3KDjwoKM1pAI_jAJ6oAGZjGuR8ByTtXVwNAvc87yl9L7y59GIg1X9PAsofMIXTnPpkAp0wCi6kzhgfTJ9ANkSnI-hWTZM4dKGwefs2Iv1R2JhQUl23I-u1nfapprBuyINYlCex1MAp-AZBfvMiEFgcw
