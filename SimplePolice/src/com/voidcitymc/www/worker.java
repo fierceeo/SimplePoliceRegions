@@ -14,6 +14,8 @@ then list of all regions player  is attached to
 
 package com.voidcitymc.www;
 
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -53,7 +55,10 @@ public void addPolice (String uuid) {
 }
 
 public void addPlayerToRegion (String region, String UUID) {
-	List<String> configList = (List<String>) Main.Data.getList(UUID)
+	List<String> configList = (List<String>)Main.Data.getList(UUID);
+	configList.add(region);
+	Main.Data.set(UUID, configList);
+	
 }
 
 public boolean alreadyPolice (String uuid) {
