@@ -52,6 +52,10 @@ public void addPolice (String uuid) {
 	}
 }
 
+public void addPlayerToRegion (String region, String UUID) {
+	List<String> configList = (List<String>) Main.Data.getList(UUID)
+}
+
 public boolean alreadyPolice (String uuid) {
 	
 
