@@ -56,8 +56,18 @@ public boolean alreadyPolice (String uuid) {
 	
 
 	if (Main.Data.getBoolean(uuid)) {
-		if (Main.Data.getBooleanArray(CurrentregionName))
-		return true;
+		
+		/*
+List<String> configList = (List<String>)plugin.getConfig().getList("List");
+configList.add(args[0]);
+plugin.getConfig(),set("List", configList);
+		 */
+		
+		
+		if (Main.Data.getBooleanArray(CurrentregionName)) {
+			return true;
+		}
+		return false;
 	} else {
 		return false;
 	}
