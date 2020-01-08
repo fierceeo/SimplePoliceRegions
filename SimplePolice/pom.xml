@@ -13,6 +13,8 @@
     </repository>
 </repositories>
   
+   <!-- worldguard v -->
+  
 <dependencies>
     <dependency>
         <groupId>com.sk89q.worldguard</groupId>
@@ -21,8 +23,7 @@
         <scope>provided</scope>
     </dependency>
 </dependencies>
-  
-   <!-- worldguard api ^ -->
+
   
 <repositories>
     <repository>
@@ -32,7 +33,10 @@
 </repositories>
 <dependencies>
   
-   <!-- worldguard dependency ^ -->
+   <!-- worldguard ^ -->
+  
+  
+  
   
     <!--This adds the Spigot API artifact to the build -->
     <dependency>
