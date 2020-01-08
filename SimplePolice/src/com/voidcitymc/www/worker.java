@@ -1,3 +1,17 @@
+//Need to write to the config like this:
+/*
+
+	- player = true
+	- player2 = true
+	- player3 = false
+
+then list of all regions player  is attached to
+
+   - player3 = __global__, spawn, wild
+
+
+*/
+
 package com.voidcitymc.www;
 
 import org.bukkit.Bukkit;
@@ -39,11 +53,15 @@ public void addPolice (String uuid) {
 }
 
 public boolean alreadyPolice (String uuid) {
-	if (Main.getInstance().getConfig().getBoolean(uuid)) {
+	
+
+	if (Main.Data.getBoolean(uuid)) {
+		if (Main.Data.getBooleanArray(CurrentregionName))
 		return true;
 	} else {
 		return false;
 	}
+
 }
 
 public void removePolice(String uuid) {
