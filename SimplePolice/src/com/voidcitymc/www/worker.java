@@ -61,10 +61,10 @@ public void addPlayerToRegion (String region, String UUID) {
 	
 }
 
-public boolean alreadyPolice (String uuid) {
-	
+public boolean alreadyPolice (String uuid, String regionName) {
+	List<String> configList = (List<String>)Main.Data.getList("List");
 
-	if (Main.Data.getBoolean(uuid)) {
+	if (Main.Data.getBoolean(uuid) && configList.contains(regionName)) {
 		
 		/*
 List<String> configList = (List<String>)plugin.getConfig().getList("List");
@@ -72,11 +72,7 @@ configList.add(args[0]);
 plugin.getConfig(),set("List", configList);
 		 */
 		
-		
-		if (Main.Data.getBooleanArray(CurrentregionName)) {
-			return true;
-		}
-		return false;
+		return true;
 	} else {
 		return false;
 	}
