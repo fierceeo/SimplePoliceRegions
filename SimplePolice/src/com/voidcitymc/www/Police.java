@@ -43,7 +43,7 @@ if (player.hasPermission("police.add")) {
 // need to check if player has perm ^
 if (args[0].equalsIgnoreCase("add")) {
 	if (playerFromCommand != "null") {
-		work.addPolice(playerFromCommand);	
+		work.addPolice(playerFromCommand, args[2], player.getWorld().toString());	
 		player.sendMessage("Added "+args[1]+" as a police officer!");
 		} else if (playerFromCommand == "null") {
 		player.sendMessage("You need to specify a player!");
@@ -58,7 +58,7 @@ if (player.hasPermission("police.remove")) {
 
 if (args[0].equalsIgnoreCase("remove")) {
 	if (playerFromCommand != "null") {
-		work.removePolice(playerFromCommand);	
+		work.removePolice(playerFromCommand, args[2], player.getWorld().toString());	
 		player.sendMessage("Removed "+args[1]+" as a police officer!");
 		} else if (playerFromCommand == "null") {
 		player.sendMessage("You need to specify a player!");

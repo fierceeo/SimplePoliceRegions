@@ -33,6 +33,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
+import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.world.World;
 import com.sk89q.worldguard.WorldGuard;
@@ -121,22 +122,11 @@ public void removePolice(String uuid, String regionName, String world) {
 
 
 public static boolean checkIfPlayerIsPoliceInRegions(Player p) {
-	/*
-	Location loc = p.getLocation();
-	RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
-	RegionManager regions = container.get((World) loc.getWorld());
-	BlockVector3 vector = BlockVector3.at(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
-	ProtectedRegion test = new ProtectedCuboidRegion("TestRegionNeededForTheSimplePolicePlugin", vector, vector);
-	ApplicableRegionSet set = regions.getApplicableRegions(test);
-	Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "region remove TestRegionNeededForTheSimplePolicePlugin");
-	set.
-	*/
-	
 
-	Location loc = new Location(world, 10, 64, 100);
+	
 	RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
 	RegionQuery query = container.createQuery();
-	ApplicableRegionSet set = query.getApplicableRegions(loc);
+	ApplicableRegionSet set = query.getApplicableRegions(BukkitAdapter.adapt(p.getLocation()));
 	
 	worker testPoliceVar = new worker();
 	for (ProtectedRegion region : set) {
