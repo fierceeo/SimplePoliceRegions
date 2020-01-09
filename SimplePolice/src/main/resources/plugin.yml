@@ -1,8 +1,8 @@
 name: SimplePolice
 author: ramdon_person
 main: com.voidcitymc.www.Main
-version: 1.2
-depend: [Essentials, WorldGuard]
+version: 2
+depend: [Essentials, WorldGuard, WorldEdit]
 commands:
    police:
       description: Your description
