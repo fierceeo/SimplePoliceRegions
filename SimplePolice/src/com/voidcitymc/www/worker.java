@@ -31,10 +31,12 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 
 import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.world.World;
 import com.sk89q.worldguard.WorldGuard;
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
@@ -118,20 +120,35 @@ public void removePolice(String uuid, String regionName, String world) {
 }
 
 
-public static String getRegionPlayerIsIn(Player p) {
+public static boolean checkIfPlayerIsPoliceInRegions(Player p) {
+	/*
 	Location loc = p.getLocation();
 	RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
 	RegionManager regions = container.get((World) loc.getWorld());
-	// Check to make sure that "regions" is not null
-	
 	BlockVector3 vector = BlockVector3.at(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
 	ProtectedRegion test = new ProtectedCuboidRegion("TestRegionNeededForTheSimplePolicePlugin", vector, vector);
 	ApplicableRegionSet set = regions.getApplicableRegions(test);
 	Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "region remove TestRegionNeededForTheSimplePolicePlugin");
+	set.
+	*/
 	
+
+	Location loc = new Location(world, 10, 64, 100);
+	RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
+	RegionQuery query = container.createQuery();
+	ApplicableRegionSet set = query.getApplicableRegions(loc);
 	
+	worker testPoliceVar = new worker();
+	for (ProtectedRegion region : set) {
+	    if (testPoliceVar.alreadyPolice(p.getUniqueId().toString(), region.toString(), p.getWorld().toString())) {
+	    	return true;
+	    }
+	}
+	return false;
 	
 }
+
+
 
 
 

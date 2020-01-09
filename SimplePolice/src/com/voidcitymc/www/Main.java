@@ -15,13 +15,6 @@ private static Main instance;
 File DataFile;
 static FileConfiguration Data;
 
-
-//instead of this simply use Main.Data
-public FileConfiguration getData() {
-    return this.Data;
-}
-
-
 private void createData() {
     DataFile = new File(getDataFolder(), "data.yml");
     if (!DataFile.exists()) {
@@ -32,6 +25,10 @@ private void createData() {
 }
 
 
+
+public static Main getInstance() {
+	return instance;
+}
 
 
 //enabled
@@ -48,11 +45,6 @@ public void onEnable() {
 	System.out.println("ramdon_person's Police Plugin Has Been Enabled!");
 }
 
-//get the instance thingy (or "this")
-
-public static Main getInstance() {
-	return instance;
-}
 
 //disabled
 @Override
