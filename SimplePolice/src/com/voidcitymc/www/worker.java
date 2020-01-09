@@ -28,8 +28,19 @@ package com.voidcitymc.www;
 import java.io.IOException;
 import java.util.List;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+
+import com.sk89q.worldedit.math.BlockVector3;
+import com.sk89q.worldedit.world.World;
+import com.sk89q.worldguard.WorldGuard;
+import com.sk89q.worldguard.protection.ApplicableRegionSet;
+import com.sk89q.worldguard.protection.managers.RegionManager;
+import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
+import com.sk89q.worldguard.protection.regions.ProtectedRegion;
+import com.sk89q.worldguard.protection.regions.RegionContainer;
+import com.sk89q.worldguard.protection.regions.RegionQuery;
 
 public class worker {
 	
@@ -107,6 +118,20 @@ public void removePolice(String uuid, String regionName, String world) {
 }
 
 
+public static String getRegionPlayerIsIn(Player p) {
+	Location loc = p.getLocation();
+	RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
+	RegionManager regions = container.get((World) loc.getWorld());
+	// Check to make sure that "regions" is not null
+	
+	BlockVector3 vector = BlockVector3.at(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
+	ProtectedRegion test = new ProtectedCuboidRegion("TestRegionNeededForTheSimplePolicePlugin", vector, vector);
+	ApplicableRegionSet set = regions.getApplicableRegions(test);
+	Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "region remove TestRegionNeededForTheSimplePolicePlugin");
+	
+	
+	
+}
 
 
 
