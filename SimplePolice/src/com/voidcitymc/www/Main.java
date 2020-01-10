@@ -37,7 +37,7 @@ public static Main getInstance() {
 public void SaveTheConfig() {
 	try {
 		Data.save(DataFile);
-	}catch (Exception e) {
+	} catch (Exception e) {
 		e.printStackTrace();
 	}
 }
