@@ -15,6 +15,9 @@ private static Main instance;
 File DataFile;
 static FileConfiguration Data;
 
+
+
+
 private void createData() {
     DataFile = new File(getDataFolder(), "data.yml");
     if (!DataFile.exists()) {
@@ -35,8 +38,8 @@ public static Main getInstance() {
 @Override
 public void onEnable() {
 	getServer().getPluginManager().registerEvents(new PoliceListener(), this);
-	//create config:
-	this.createData();
+	//create config;
+	createData();
 	
 	instance = this;
 	
