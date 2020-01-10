@@ -25,22 +25,14 @@ then list of all regions player  is attached to
 
 package com.voidcitymc.www;
 
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Bukkit;
-import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
-
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
-import com.sk89q.worldedit.math.BlockVector3;
-import com.sk89q.worldedit.world.World;
 import com.sk89q.worldguard.WorldGuard;
-import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
-import com.sk89q.worldguard.protection.managers.RegionManager;
-import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import com.sk89q.worldguard.protection.regions.RegionQuery;
@@ -70,10 +62,15 @@ public void addPolice (String uuid, String regionName, String world) {
 		return;
 	} else if (!alreadyPolice(uuid, regionName, world)) {
 		
-		if (uuid != null && regionName != null && world != null) {
+		if (Main.Data != null) {
 		List<String> configList = (List<String>)Main.Data.getList(uuid+world);
 		configList.add(regionName);
 		Main.Data.set(uuid+world, configList);
+		} else {
+			List<String> configList =  new ArrayList<String>();
+			configList.add(regionName);
+			Main.Data.set(uuid+world, configList);
+		}
 		//Saves the list ^
 		
 		//Puts uuid = true
@@ -82,7 +79,6 @@ public void addPolice (String uuid, String regionName, String world) {
         main.saveResource("data.yml", false);
 /////		
 		//Need To Add Method Save This CONFIG!!!
-		}
 		
 /*		Main.getInstance().getConfig().options().copyDefaults(true);
 		Main.getInstance().saveConfig(); */
