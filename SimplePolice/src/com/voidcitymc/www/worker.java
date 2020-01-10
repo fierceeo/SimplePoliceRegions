@@ -70,6 +70,7 @@ public void addPolice (String uuid, String regionName, String world) {
 		return;
 	} else if (!alreadyPolice(uuid, regionName, world)) {
 		
+		if (uuid != null && regionName != null && world != null) {
 		List<String> configList = (List<String>)Main.Data.getList(uuid+world);
 		configList.add(regionName);
 		Main.Data.set(uuid+world, configList);
@@ -77,9 +78,11 @@ public void addPolice (String uuid, String regionName, String world) {
 		
 		//Puts uuid = true
 		Main.Data.addDefault(uuid, true);
+		Main main = new Main();
+        main.saveResource("data.yml", false);
 /////		
 		//Need To Add Method Save This CONFIG!!!
-		
+		}
 		
 /*		Main.getInstance().getConfig().options().copyDefaults(true);
 		Main.getInstance().saveConfig(); */
