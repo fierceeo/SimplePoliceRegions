@@ -25,8 +25,11 @@ then list of all regions player  is attached to
 
 package com.voidcitymc.www;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -38,7 +41,7 @@ import com.sk89q.worldguard.protection.regions.RegionContainer;
 import com.sk89q.worldguard.protection.regions.RegionQuery;
 
 public class worker {
-	
+	 
 
 	
 //check if a player has item in hand
@@ -75,7 +78,16 @@ public void addPolice (String uuid, String regionName, String world) {
 		
 		//Puts uuid = true
 		Main.Data.addDefault(uuid, true);
-        Main.getInstance().saveResource("data.yml", false);
+		
+		try {
+			Main.Data.save("data.yml");
+	    } catch (IOException ex) {
+	        Main.getInstance().getLogger().log(Level.SEVERE, "Could not save config to " + Main.Data, ex);
+	    }
+			
+			
+			
+			//Main.getInstance().saveResource("data.yml", false);
 		return;
 	}
 }
@@ -96,15 +108,19 @@ public void removePolice(String uuid, String regionName, String world) {
 	worker testPoliceVar = new worker();
 	if (testPoliceVar.alreadyPolice(uuid, regionName, world)) {
 		Main.Data.addDefault(uuid, null);
+//if null dosent work change it back to false
 		List<String> configList = (List<String>)Main.Data.getList(uuid+world);
 		configList.remove(regionName);
 		Main.Data.set(uuid+world, configList);
 		
 		
 		//need to find the save config method of the custom config
-		Main.getInstance().saveConfig();
-		return;
-	} else {
+		try {
+			Main.Data.save("data.yml");
+	    } catch (IOException ex) {
+	        Main.getInstance().getLogger().log(Level.SEVERE, "Could not save config to " + Main.Data, ex);
+	    }
+		
 		return;
 	}
 }
