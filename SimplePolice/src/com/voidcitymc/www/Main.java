@@ -1,7 +1,10 @@
 package com.voidcitymc.www;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,9 +28,17 @@ public void createData() {
         saveResource("data.yml", false);
      }
     Data = new YamlConfiguration();
+    try {
+		Data.load(DataFile);
+	} catch (FileNotFoundException e) {
+		e.printStackTrace();
+	} catch (IOException e) {
+		e.printStackTrace();
+	} catch (InvalidConfigurationException e) {
+		e.printStackTrace();
+	}
+    
 }
-
-
 
 public static Main getInstance() {
 	return instance;

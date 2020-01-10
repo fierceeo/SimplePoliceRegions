@@ -32,6 +32,7 @@ import java.util.logging.Level;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldguard.WorldGuard;
@@ -79,11 +80,7 @@ public void addPolice (String uuid, String regionName, String world) {
 		//Puts uuid = true
 		Main.Data.addDefault(uuid, true);
 		
-	    try {
-            Main.Data.save("data.yml");
-        } catch (IOException e) {
-            Main.getInstance().getLogger().warning("Unable to save data.yml");
-        }
+		Main.getInstance().saveResource("data.yml", true);
 			
 			
 			
@@ -115,12 +112,8 @@ public void removePolice(String uuid, String regionName, String world) {
 		
 		
 		//need to find the save config method of the custom config
-	    try {
-            Main.Data.save("data.yml");
-        } catch (IOException e) {
-            Main.getInstance().getLogger().warning("Unable to save data.yml");
-        }
 
+		Main.getInstance().saveResource("data.yml", true);
 		
 		return;
 	}
