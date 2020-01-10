@@ -16,7 +16,7 @@ private static Main instance;
 
 
 File DataFile;
-static FileConfiguration Data;
+FileConfiguration Data;
 
 
 
@@ -27,23 +27,20 @@ public void createData() {
         DataFile.getParentFile().mkdirs();
         saveResource("data.yml", false);
      }
-    Data = new YamlConfiguration();
-    try {
-		Data.load(DataFile);
-	} catch (FileNotFoundException e) {
-		e.printStackTrace();
-	} catch (IOException e) {
-		e.printStackTrace();
-	} catch (InvalidConfigurationException e) {
-		e.printStackTrace();
-	}
-    
+    Data = YamlConfiguration.loadConfiguration(DataFile);
 }
 
 public static Main getInstance() {
 	return instance;
 }
 
+public void SaveTheConfig() {
+	try {
+		Data.save(DataFile);
+	}catch (Exception e) {
+		e.printStackTrace();
+	}
+}
 
 //enabled
 @Override

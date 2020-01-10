@@ -68,19 +68,19 @@ public void addPolice (String uuid, String regionName, String world) {
 		
 		List<String> configList =  new ArrayList<String>();
 		if (configList == null) {
-		List<String> configListWhenItsNull = (List<String>)Main.Data.getList(uuid+world);
+		List<String> configListWhenItsNull = (List<String>)Main.getInstance().Data.getList(uuid+world);
 		configListWhenItsNull.add(regionName);
-		Main.Data.set(uuid+world, configListWhenItsNull);
+		Main.getInstance().Data.set(uuid+world, configListWhenItsNull);
 		} else if (configList != null) {
 			configList.add(regionName);
-			Main.Data.set(uuid+world, configList);
+			Main.getInstance().Data.set(uuid+world, configList);
 		}
 		//Saves the list ^
 		
 		//Puts uuid = true
-		Main.Data.addDefault(uuid, true);
+		Main.getInstance().Data.addDefault(uuid, true);
 		
-		Main.getInstance().saveResource("data.yml", true);
+		Main.getInstance().SaveTheConfig();
 			
 			
 			
@@ -91,9 +91,9 @@ public void addPolice (String uuid, String regionName, String world) {
 
 	
 public boolean alreadyPolice (String uuid, String regionName, String world) {
-	List<String> configList = (List<String>)Main.Data.getList(uuid+world);
+	List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
 
-	if (Main.Data.getBoolean(uuid) && configList.contains(regionName)) {		
+	if (Main.getInstance().Data.getBoolean(uuid) && configList.contains(regionName)) {		
 		return true;
 	} else {
 		return false;
@@ -104,16 +104,16 @@ public boolean alreadyPolice (String uuid, String regionName, String world) {
 public void removePolice(String uuid, String regionName, String world) {
 	worker testPoliceVar = new worker();
 	if (testPoliceVar.alreadyPolice(uuid, regionName, world)) {
-		Main.Data.addDefault(uuid, null);
+		Main.getInstance().Data.addDefault(uuid, null);
 //if null dosent work change it back to false
-		List<String> configList = (List<String>)Main.Data.getList(uuid+world);
+		List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
 		configList.remove(regionName);
-		Main.Data.set(uuid+world, configList);
+		Main.getInstance().Data.set(uuid+world, configList);
 		
 		
 		//need to find the save config method of the custom config
 
-		Main.getInstance().saveResource("data.yml", true);
+		Main.getInstance().SaveTheConfig();
 		
 		return;
 	}
