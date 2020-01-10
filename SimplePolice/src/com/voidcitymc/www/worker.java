@@ -79,7 +79,11 @@ public void addPolice (String uuid, String regionName, String world) {
 		//Puts uuid = true
 		Main.Data.addDefault(uuid, true);
 		
-		Main.getInstance().createData();
+	    try {
+            Main.Data.save("data.yml");
+        } catch (IOException e) {
+            Main.getInstance().getLogger().warning("Unable to save data.yml");
+        }
 			
 			
 			
@@ -111,7 +115,11 @@ public void removePolice(String uuid, String regionName, String world) {
 		
 		
 		//need to find the save config method of the custom config
-		Main.getInstance().createData();
+	    try {
+            Main.Data.save("data.yml");
+        } catch (IOException e) {
+            Main.getInstance().getLogger().warning("Unable to save data.yml");
+        }
 
 		
 		return;
