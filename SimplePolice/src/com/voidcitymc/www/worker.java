@@ -75,8 +75,7 @@ public void addPolice (String uuid, String regionName, String world) {
 		
 		//Puts uuid = true
 		Main.Data.addDefault(uuid, true);
-		Main main = new Main();
-        main.saveResource("data.yml", false);
+        Main.getInstance().saveResource("data.yml", false);
 		return;
 	}
 }
