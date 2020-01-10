@@ -62,12 +62,12 @@ public void addPolice (String uuid, String regionName, String world) {
 		return;
 	} else if (!alreadyPolice(uuid, regionName, world)) {
 		
-		if (Main.Data != null) {
-		List<String> configList = (List<String>)Main.Data.getList(uuid+world);
-		configList.add(regionName);
-		Main.Data.set(uuid+world, configList);
-		} else {
-			List<String> configList =  new ArrayList<String>();
+		List<String> configList =  new ArrayList<String>();
+		if (configList == null) {
+		List<String> configListWhenItsNull = (List<String>)Main.Data.getList(uuid+world);
+		configListWhenItsNull.add(regionName);
+		Main.Data.set(uuid+world, configListWhenItsNull);
+		} else if (configList != null) {
 			configList.add(regionName);
 			Main.Data.set(uuid+world, configList);
 		}
@@ -77,17 +77,9 @@ public void addPolice (String uuid, String regionName, String world) {
 		Main.Data.addDefault(uuid, true);
 		Main main = new Main();
         main.saveResource("data.yml", false);
-/////		
-		//Need To Add Method Save This CONFIG!!!
-		
-/*		Main.getInstance().getConfig().options().copyDefaults(true);
-		Main.getInstance().saveConfig(); */
-		return;
-	} else {
 		return;
 	}
 }
-
 
 	
 public boolean alreadyPolice (String uuid, String regionName, String world) {
