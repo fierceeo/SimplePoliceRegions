@@ -18,7 +18,7 @@ static FileConfiguration Data;
 
 
 
-private void createData() {
+public void createData() {
     DataFile = new File(getDataFolder(), "data.yml");
     if (!DataFile.exists()) {
         DataFile.getParentFile().mkdirs();
