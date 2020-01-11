@@ -64,18 +64,13 @@ public String playerToString (Player player) {
 public void addPolice (String uuid, String regionName, String world) {
 	if (alreadyPolice(uuid, regionName, world)) {
 		return;
-	} else if (!alreadyPolice(uuid, regionName, world)) {
+	}
+
+        if (!alreadyPolice(uuid, regionName, world)) {
 		
-		List<String> configList =  new ArrayList<String>();
-		if (configList == null) {
-		List<String> configListWhenItsNull = (List<String>)Main.getInstance().Data.getList(uuid+world);
-		configListWhenItsNull.add(regionName);
-		Main.getInstance().Data.set(uuid+world, configListWhenItsNull);
-		} else if (configList != null) {
-			configList.add(regionName);
-			Main.getInstance().Data.set(uuid+world, configList);
-		}
-		//Saves the list ^
+                List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
+		configList.add(regionName);
+		Main.getInstance().Data.set(uuid+world, configList);
 		
 		//Puts uuid = true
 		Main.getInstance().Data.addDefault(uuid, true);
