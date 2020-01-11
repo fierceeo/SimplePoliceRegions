@@ -1,26 +1,6 @@
-		/*
-List<String> configList = (List<String>)plugin.getConfig().getList("List");
-configList.add(args[0]);
-plugin.getConfig().set("List", configList);
-		 */
-
-
-
-
-
-
-//Need to write to the config like this:
-/*
-
-	- player = true
-	- player2 = true
-	- player3 = false
-
-then list of all regions player  is attached to
+/*Need to write to the config like this:
 
    - player3+worldname = __global__, spawn, wild
-
-
 */
 
 package com.voidcitymc.www;
