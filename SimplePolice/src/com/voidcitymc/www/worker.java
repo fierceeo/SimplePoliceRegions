@@ -113,7 +113,7 @@ public static boolean checkIfPlayerIsPoliceInRegions(Player p) {
 	
 	worker testPoliceVar = new worker();
 	for (ProtectedRegion region : set) {
-	    if (testPoliceVar.alreadyPolice(p.getUniqueId().toString(), region.toString(), p.getWorld().toString())) {
+	    if (testPoliceVar.alreadyPolice(p.getUniqueId().toString(), region.getId(), p.getWorld().toString())) {
 	    	return true;
 	    }
 	}
