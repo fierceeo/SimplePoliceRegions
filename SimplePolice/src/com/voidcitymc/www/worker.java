@@ -49,8 +49,16 @@ public void addPolice (String uuid, String regionName, String world) {
         if (!alreadyPolice(uuid, regionName, world)) {
 		
                 List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
-		configList.add(regionName);
-		Main.getInstance().Data.set(uuid+world, configList);
+                if (configList != null) {
+            		configList.add(regionName);
+            		Main.getInstance().Data.set(uuid+world, configList);
+                }
+                if (configList == null) {
+                	List<String> configListNull =  new ArrayList<String>();
+                	configListNull.add(regionName);
+                	Main.getInstance().Data.set(uuid+world, configListNull);
+                }
+
 		
 		//Puts uuid = true
 		Main.getInstance().Data.addDefault(uuid, true);
