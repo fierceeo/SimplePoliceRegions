@@ -107,7 +107,7 @@ public void removePolice(String uuid, String regionName, String world) {
 public static boolean checkIfPlayerIsPoliceInRegions(Player p) {
 
 //remove me
-        System.out.println(“reached method”);
+        System.out.println("reached method");
 	
 	RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
 	RegionQuery query = container.createQuery();
