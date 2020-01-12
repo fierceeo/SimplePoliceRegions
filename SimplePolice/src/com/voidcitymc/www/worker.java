@@ -76,13 +76,14 @@ public void addPolice (String uuid, String regionName, String world) {
 	
 public boolean alreadyPolice (String uuid, String regionName, String world) {
 	List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
-
-	if (Main.getInstance().Data.getBoolean(uuid) && configList.contains(regionName)) {		
-		return true;
-	} else {
-		return false;
+	
+		if (configList != null) {
+			if (Main.getInstance().Data.getBoolean(uuid) && configList.contains(regionName)) {
+				return true;
+			}
+			return false;
 	}
-
+		return false;
 }
 
 public void removePolice(String uuid, String regionName, String world) {
