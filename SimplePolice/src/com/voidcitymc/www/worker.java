@@ -80,8 +80,7 @@ public boolean alreadyPolice (String uuid, String regionName, String world) {
 public void removePolice(String uuid, String regionName, String world) {
 	worker testPoliceVar = new worker();
 	if (testPoliceVar.alreadyPolice(uuid, regionName, world)) {
-		Main.getInstance().Data.addDefault(uuid, null);
-//if null dosent work change it back to false
+		Main.getInstance().Data.addDefault(uuid, false);
 		List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
 		configList.remove(regionName);
 		Main.getInstance().Data.set(uuid+world, configList);
