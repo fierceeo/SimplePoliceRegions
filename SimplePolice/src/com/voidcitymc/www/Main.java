@@ -47,6 +47,8 @@ public void SaveTheConfig() {
 //enabled
 @Override
 public void onEnable() {
+        Metrics metrics = new Metrics(this);
+
 	getServer().getPluginManager().registerEvents(new PoliceListener(), this);
 	//create config;
 	createData();
