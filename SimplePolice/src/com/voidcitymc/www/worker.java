@@ -45,9 +45,9 @@ public void addPolice (String uuid, String regionName, String world) {
 	if (alreadyPolice(uuid, regionName, world)) {
 		return;
 	}
-	List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
-        if (!alreadyPolice(uuid, regionName, world) && !configList.contains(regionName)) {
-		
+
+        if (!alreadyPolice(uuid, regionName, world)) {
+        		List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
          
                 if (configList != null) {
             		configList.add(regionName);
@@ -78,7 +78,7 @@ public boolean alreadyPolice (String uuid, String regionName, String world) {
 	List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
 	
 		if (configList != null) {
-			if (Main.getInstance().Data.getBoolean(uuid) && configList.contains(regionName)) {
+			if (configList.contains(regionName)) {
 				return true;
 			}
 			return false;

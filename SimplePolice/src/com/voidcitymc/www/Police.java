@@ -74,7 +74,7 @@ if (args[0].equalsIgnoreCase("remove")) {
 }
 
 
-if (Main.getInstance().Data.getBoolean(playerFromCommand)) {
+if (true /* need to replace with a thing that tests if the person is a police */) {
 	//Test if player is police
 if (args[0].equalsIgnoreCase("help") || args.length == 0) {
 	player.sendMessage("[Police]");
