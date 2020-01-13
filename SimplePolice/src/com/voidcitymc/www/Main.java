@@ -66,7 +66,7 @@ public void onEnable() {
 public void onDisable() {
 	System.out.println("Thanks for using ramdon_person's police plugin!");
 	System.out.println("-- Saving Data --");
-	this.saveConfig();
+	this.SaveTheConfig();
 	System.out.println("-- All data saved! --");
 }
 }

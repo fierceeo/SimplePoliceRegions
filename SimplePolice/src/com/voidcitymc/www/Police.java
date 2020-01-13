@@ -25,17 +25,22 @@ worker work = new worker();
 String playerFromCommand = "null";
 if (args.length > 1) {
 	playerFromCommand = Bukkit.getPlayer(args[1]).getUniqueId().toString();	
+} else {
+	playerFromCommand = player.getUniqueId().toString();
 }
-
+boolean done = false;
 // convert string to uuid: UUID returnUUID = UUID.fromString(uuidVarname);
 
 
 
 
 //Add police
+
+
 if (player.hasPermission("police.unjail")) {
 	if (args[0].equalsIgnoreCase("unjail")) {
 		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "essentials:unjail "+player.getName());
+		done = true;
 	}
 }
 
@@ -48,7 +53,7 @@ if (args[0].equalsIgnoreCase("add")) {
 		} else if (playerFromCommand == "null") {
 		player.sendMessage("You need to specify a player!");
 	}
-	
+	done = true;
 }
 
 }
@@ -63,17 +68,27 @@ if (args[0].equalsIgnoreCase("remove")) {
 		} else if (playerFromCommand == "null") {
 		player.sendMessage("You need to specify a player!");
 	}
+	done = true;
 }
 
 }
 
 
-if (player.hasPermission("police.help")) {
-	
-if (args[0].equalsIgnoreCase("help")) {
+if (Main.getInstance().Data.getBoolean(playerFromCommand)) {
+	//Test if player is police
+if (args[0].equalsIgnoreCase("help") || args.length == 0) {
 	player.sendMessage("[Police]");
-	player.sendMessage("Commands:");
-	player.sendMessage("");
+	player.sendMessage("To arrest someone simply attack them with a blaze rod");
+	if (player.hasPermission("police.add")) {
+		player.sendMessage("/police add (username) (region)");
+	}
+	if (player.hasPermission("police.remove")) {
+		player.sendMessage("/police remove (username) (region)");
+	}
+	if (player.hasPermission("police.unjail")) {
+		player.sendMessage("/police unjail (username)");
+	}
+	done = true;
 }
 }
 
