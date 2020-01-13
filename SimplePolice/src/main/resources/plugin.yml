@@ -2,6 +2,7 @@ name: SimplePolice
 author: ramdon_person
 main: com.voidcitymc.www.Main
 version: 2.0
+api-version: 1.15
 depend: [Essentials, WorldGuard, WorldEdit]
 commands:
    police:
