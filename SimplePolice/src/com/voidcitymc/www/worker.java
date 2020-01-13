@@ -105,9 +105,6 @@ public void removePolice(String uuid, String regionName, String world) {
 
 
 public static boolean checkIfPlayerIsPoliceInRegions(Player p) {
-
-//remove me
-        System.out.println("reached method");
 	
 	RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
 	RegionQuery query = container.createQuery();
@@ -115,11 +112,13 @@ public static boolean checkIfPlayerIsPoliceInRegions(Player p) {
 	
 	worker testPoliceVar = new worker();
 	for (ProtectedRegion region : set) {
-//remove me v
-            System.out.println(region.getId());
+		
 	    if (testPoliceVar.alreadyPolice(p.getUniqueId().toString(), region.getId(), p.getWorld().toString())) {
 	    	return true;
 	    }
+	}
+	if (testPoliceVar.alreadyPolice(p.getUniqueId().toString(), "__global__", p.getWorld().toString())) {
+		return true;
 	}
 	return false;
 	
