@@ -45,10 +45,10 @@ public void addPolice (String uuid, String regionName, String world) {
 	if (alreadyPolice(uuid, regionName, world)) {
 		return;
 	}
-
-        if (!alreadyPolice(uuid, regionName, world)) {
+	List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
+        if (!alreadyPolice(uuid, regionName, world) && !configList.contains(regionName)) {
 		
-                List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
+         
                 if (configList != null) {
             		configList.add(regionName);
             		Main.getInstance().Data.set(uuid+world, configList);
