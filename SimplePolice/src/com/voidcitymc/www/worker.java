@@ -81,7 +81,8 @@ public boolean alreadyPolice (String uuid, String regionName, String world) {
 			if (configList.contains(regionName)) {
 				return true;
 			}
-			return false;
+                        //because we know that a config list that’s not empty has to contain something we can conslude this player is a police in some region
+			return true;
 	}
 		return false;
 }
