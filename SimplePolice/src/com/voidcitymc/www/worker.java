@@ -73,6 +73,17 @@ public void addPolice (String uuid, String regionName, String world) {
         return;
 }
 
+
+public boolean isPoliceInGeneral(String uuid, String world) {
+	List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
+	
+		if (configList != null) {
+                        return true;
+                }
+return false;
+}
+
+
 	
 public boolean alreadyPolice (String uuid, String regionName, String world) {
 	List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
@@ -81,8 +92,7 @@ public boolean alreadyPolice (String uuid, String regionName, String world) {
 			if (configList.contains(regionName)) {
 				return true;
 			}
-                        //because we know that a config list that’s not empty has to contain something we can conslude this player is a police in some region
-			return true;
+                        return false;
 	}
 		return false;
 }
