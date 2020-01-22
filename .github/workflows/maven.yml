@@ -14,5 +14,4 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
-      run: cd SimplePolice
-      run: mvn clean install
+      run: cd SimplePolice && mvn clean install
