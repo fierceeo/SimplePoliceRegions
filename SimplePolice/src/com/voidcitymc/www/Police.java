@@ -37,7 +37,7 @@ boolean done = false;
 //Add police
 
 
-if (player.hasPermission("police.unjail")) {
+if (worker.alreadyPolice()) {
 	if (args[0].equalsIgnoreCase("unjail")) {
 		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "essentials:unjail "+player.getName());
 		done = true;
