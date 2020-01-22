@@ -73,9 +73,10 @@ if (args[0].equalsIgnoreCase("remove")) {
 
 }
 
-
-if (true /* need to replace with a thing that tests if the person is a police */) {
+//unjail
+if (worker.isPoliceInGeneral(player.getUniqueId().toString(), player.getWorld().toString())) {
 	//Test if player is police
+
 if (args[0].equalsIgnoreCase("help") || args.length == 0) {
 	player.sendMessage("[Police]");
 	player.sendMessage("To arrest someone simply attack them with a blaze rod");
@@ -85,9 +86,7 @@ if (args[0].equalsIgnoreCase("help") || args.length == 0) {
 	if (player.hasPermission("police.remove")) {
 		player.sendMessage("/police remove (username) (region)");
 	}
-	if (player.hasPermission("police.unjail")) {
-		player.sendMessage("/police unjail (username)");
-	}
+	        player.sendMessage("/police unjail (username)");
 	done = true;
 }
 }
