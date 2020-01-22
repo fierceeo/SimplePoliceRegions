@@ -13,9 +13,9 @@ Bukkit: https://dev.bukkit.org/projects/simple-police/files
 
 Make sure to have essentials installed and create a jail named “jail1”
 
-To add a police do /police add (username)
+To add a police do /police add (username) (world guard region name)
 
-To jail a player, make sure you are a police and attack a player with a blaze rod
+To jail a player, make sure you are a police and attack a player with a blaze rod and that you are inside the region that you are police of.
 
 
 **Permissions**
@@ -34,13 +34,16 @@ To jail a player, make sure you are a police and attack a player with a blaze ro
 
 **Commands**
 
-/police add (username)
+/police add (username) (region)
 
-/police remove (username)
+/police remove (username) (region)
 
+/police unjail (username)
 
 **Note:**
 
-Requires Essentials to be setup and a jail named “jail1”
+Requires Essentials to be setup and  a jail named “jail1”
 
 This plugin has uuid support
+
+Note: I will be adding support for multiple jails soon
