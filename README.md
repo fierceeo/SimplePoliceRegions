@@ -40,3 +40,5 @@ Requires Essentials to be setup and  a jail named “jail1”
 This plugin has uuid support
 
 Note: I will be adding support for multiple jails soon
+
+And again, thanks for checking this plugin out, I hope you enjoy it!
