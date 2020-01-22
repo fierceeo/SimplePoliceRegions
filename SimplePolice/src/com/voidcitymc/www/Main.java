@@ -1,33 +1,72 @@
 package com.voidcitymc.www;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import com.voidcitymc.www.Metrics;
+
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
 private static Main instance;
 
-//enabled
-@Override
-public void onEnable() {
-	getServer().getPluginManager().registerEvents(new PoliceListener(), this);
-	instance = this;
-	this.getCommand("police").setExecutor(new Police());
-	System.out.println("ramdon_person's Police Plugin Has Been Enabled!");
+
+
+
+File DataFile;
+FileConfiguration Data;
+
+
+
+
+public void createData() {
+    DataFile = new File(getDataFolder(), "data.yml");
+    if (!DataFile.exists()) {
+        DataFile.getParentFile().mkdirs();
+        saveResource("data.yml", false);
+     }
+    Data = YamlConfiguration.loadConfiguration(DataFile);
 }
-//get the instance thingy (or "this")
 
 public static Main getInstance() {
 	return instance;
 }
+
+public void SaveTheConfig() {
+	try {
+		Data.save(DataFile);
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+
+//enabled
+@Override
+public void onEnable() {
+        Metrics metrics = new Metrics(this);
+
+	getServer().getPluginManager().registerEvents(new PoliceListener(), this);
+	//create config;
+	createData();
+	
+	instance = this;
+	
+	this.getCommand("police").setExecutor(new Police());
+	
+	System.out.println("ramdon_person's Police Plugin Has Been Enabled!");
+}
+
 
 //disabled
 @Override
 public void onDisable() {
 	System.out.println("Thanks for using ramdon_person's police plugin!");
 	System.out.println("-- Saving Data --");
-	this.saveConfig();
+	this.SaveTheConfig();
 	System.out.println("-- All data saved! --");
 }
 }
-
-// need to review this
-// https://www.spigotmc.org/threads/player-haspermission-not-working.146769/?__cf_chl_jschl_tk__=7095348855a540c73071771e519f7172fd209dcf-1575993858-0-AbnNQ7iSbPLxP1z0fpYy0K_zmvQtyErHCsq704IWp2NTEpvKmOktTWfQeQx-JGEDDTq7S9OXJaI0mUBY0g-NHsSnOiQ0Kn3ldwDmK21bnHhzczIkzOaTpkQT3WQJVwi2az4jQgpSA4t9mzbzo88WLwfLAzaj9EMOxhwG5UGIoTS2eRxfYFTykFsVqyWDrpnVto-70kIYk79uaREGwaICH0NtgytTPfMn6j_GlgPHjDhY5ll-Tm6-Z2BzlGJDQitNFMpqqTfDHQtfwVvo7PwcQeYonEIJOc71eH7Man8I53ZOljk_q2IbkpMuq8LaDNMeOFxpePpa57AS186S4Zf5pvE

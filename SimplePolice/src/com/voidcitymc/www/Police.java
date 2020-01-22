@@ -25,17 +25,22 @@ worker work = new worker();
 String playerFromCommand = "null";
 if (args.length > 1) {
 	playerFromCommand = Bukkit.getPlayer(args[1]).getUniqueId().toString();	
+} else {
+	playerFromCommand = player.getUniqueId().toString();
 }
-
+boolean done = false;
 // convert string to uuid: UUID returnUUID = UUID.fromString(uuidVarname);
 
 
 
 
 //Add police
+
+
 if (player.hasPermission("police.unjail")) {
 	if (args[0].equalsIgnoreCase("unjail")) {
 		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "essentials:unjail "+player.getName());
+		done = true;
 	}
 }
 
@@ -43,12 +48,12 @@ if (player.hasPermission("police.add")) {
 // need to check if player has perm ^
 if (args[0].equalsIgnoreCase("add")) {
 	if (playerFromCommand != "null") {
-		work.addPolice(playerFromCommand);	
+		work.addPolice(playerFromCommand, args[2], player.getWorld().toString());	
 		player.sendMessage("Added "+args[1]+" as a police officer!");
 		} else if (playerFromCommand == "null") {
 		player.sendMessage("You need to specify a player!");
 	}
-	
+	done = true;
 }
 
 }
@@ -58,22 +63,32 @@ if (player.hasPermission("police.remove")) {
 
 if (args[0].equalsIgnoreCase("remove")) {
 	if (playerFromCommand != "null") {
-		work.removePolice(playerFromCommand);	
+		work.removePolice(playerFromCommand, args[2], player.getWorld().toString());	
 		player.sendMessage("Removed "+args[1]+" as a police officer!");
 		} else if (playerFromCommand == "null") {
 		player.sendMessage("You need to specify a player!");
 	}
+	done = true;
 }
 
 }
 
 
-if (player.hasPermission("police.help")) {
-	
-if (args[0].equalsIgnoreCase("help")) {
+if (true /* need to replace with a thing that tests if the person is a police */) {
+	//Test if player is police
+if (args[0].equalsIgnoreCase("help") || args.length == 0) {
 	player.sendMessage("[Police]");
-	player.sendMessage("Commands:");
-	player.sendMessage("");
+	player.sendMessage("To arrest someone simply attack them with a blaze rod");
+	if (player.hasPermission("police.add")) {
+		player.sendMessage("/police add (username) (region)");
+	}
+	if (player.hasPermission("police.remove")) {
+		player.sendMessage("/police remove (username) (region)");
+	}
+	if (player.hasPermission("police.unjail")) {
+		player.sendMessage("/police unjail (username)");
+	}
+	done = true;
 }
 }
 

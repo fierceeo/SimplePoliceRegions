@@ -2,34 +2,54 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>SimplePolice</groupId>
   <artifactId>SimplePolice</artifactId>
-  <version>1.2</version>
+  <version>2.0</version>
   
   
   <repositories>
-    <!-- This adds the Spigot Maven repository to the build -->
+    <!-- This adds the Bukkit Maven repository to the build -->
+        <repository>
+          <id>bukkit-repo</id>
+          <url>http://repo.bukkit.org/content/groups/public/</url>
+        </repository>
+    
     <repository>
-        <id>spigot-repo</id>
-        <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        <id>sk89q-repo</id>
+        <url>https://maven.enginehub.org/repo/</url>
     </repository>
+    
+    <repository>
+        <id>enginehub-maven</id>
+        <url>http://maven.enginehub.org/repo/</url>
+    </repository>
+    
 </repositories>
 
-<dependencies>
-    <!--This adds the Spigot API artifact to the build -->
-    <dependency>
-           <groupId>org.spigotmc</groupId>
-           <artifactId>spigot-api</artifactId>
-           <version>1.15.1-R0.1-SNAPSHOT</version>
-           <scope>provided</scope>
-    </dependency>
-
-    <!--This adds the Bukkit API artifact to the build -->
-    <!-- Do not include this in the pom.xml file if the Spigot API is already added -->
+  
+  
+ <dependencies>
+    <!--Bukkit API -->
     <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
             <version>1.15.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
     </dependency>
+    
+    
+    <dependency>
+ 		    <groupId>com.sk89q.worldedit</groupId>
+            <artifactId>worldedit-bukkit</artifactId>
+		    <version>7.1.0-SNAPSHOT</version>
+    </dependency>
+    
+    
+    <dependency>
+            <groupId>com.sk89q.worldguard</groupId>
+            <artifactId>worldguard-bukkit</artifactId>
+            <version>7.0.2-SNAPSHOT</version>
+        <scope>provided</scope>
+    </dependency>
+    
 </dependencies>
   
   
