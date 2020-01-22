@@ -34,16 +34,16 @@ boolean done = false;
 
 
 
-//Add police
+//Add unjail
 
-
-if (worker.alreadyPolice()) {
+if (work.isPoliceInGeneral(player.getUniqueId().toString(), player.getWorld().toString())) {
 	if (args[0].equalsIgnoreCase("unjail")) {
 		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "essentials:unjail "+player.getName());
 		done = true;
 	}
 }
 
+//add police
 if (player.hasPermission("police.add")) {
 // need to check if player has perm ^
 if (args[0].equalsIgnoreCase("add")) {
@@ -73,8 +73,8 @@ if (args[0].equalsIgnoreCase("remove")) {
 
 }
 
-//unjail
-if (worker.isPoliceInGeneral(player.getUniqueId().toString(), player.getWorld().toString())) {
+//help
+if (work.isPoliceInGeneral(player.getUniqueId().toString(), player.getWorld().toString())) {
 	//Test if player is police
 
 if (args[0].equalsIgnoreCase("help") || args.length == 0) {
