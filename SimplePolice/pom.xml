@@ -55,7 +55,7 @@
   
   
   <build>
-    <sourceDirectory>src</sourceDirectory>
+    <sourceDirectory>${project.basedir}/src</sourceDirectory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
