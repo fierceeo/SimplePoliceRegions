@@ -1,5 +1,5 @@
 **This is a better version of SimplePolice, with world guard region support and with Cleaner Code**
-This plugin allows you to create police per region: Allows people to be police in specific world guard regions (Helpful for city regions)
+This plugin allows you to create police per region: Allows people to be police in specific world guard regions (Helpful for city regions).
 
 
 Thanks for checking out my police plugin.
