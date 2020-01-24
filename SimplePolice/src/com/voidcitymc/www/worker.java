@@ -50,12 +50,12 @@ public void addPolice (String uuid, String regionName, String world) {
         		List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
          
                 if (configList != null) {
-            		configList.add(regionName);
+            		configList.add(regionName.toLowerCase());
             		Main.getInstance().Data.set(uuid+world, configList);
                 }
                 if (configList == null) {
                 	List<String> configListNull =  new ArrayList<String>();
-                	configListNull.add(regionName);
+                	configListNull.add(regionName.toLowerCase());
                 	Main.getInstance().Data.set(uuid+world, configListNull);
                 }
 
@@ -102,7 +102,7 @@ public void removePolice(String uuid, String regionName, String world) {
 	if (testPoliceVar.alreadyPolice(uuid, regionName, world)) {
 		Main.getInstance().Data.addDefault(uuid, false);
 		List<String> configList = (List<String>)Main.getInstance().Data.getList(uuid+world);
-		configList.remove(regionName);
+		configList.remove(regionName.toLowerCase());
 		Main.getInstance().Data.set(uuid+world, configList);
 		
 		
