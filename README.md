@@ -10,7 +10,7 @@ Here is some information on how to use this.
 
 Github: https://github.com/ramdon-person/SimplePoliceRegions/releases
 
-Spigot: 
+Spigot: https://www.spigotmc.org/resources/simple-police-regions.74583/
 
 Bukkit: pending
 
