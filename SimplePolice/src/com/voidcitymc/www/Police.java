@@ -13,6 +13,33 @@ public class Police implements CommandExecutor {
 // This method is called, when somebody uses our command
 @Override
 public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+
+if (sender instanceof Player == false) {
+	sender.sendMessage("[Police] You must be a player to run commands, sorry");
+}
+	
+if (args.length == 0 && sender instanceof Player) {
+	Player player = (Player) sender;
+	worker work = new worker();
+	if (work.isPoliceInGeneral(player.getUniqueId().toString(), player.getWorld().toString())) {
+		//Test if player is police
+
+
+		player.sendMessage("[Police]");
+		player.sendMessage("To arrest someone simply attack them with a blaze rod");
+		if (player.hasPermission("police.add")) {
+			player.sendMessage("/police add (username) (region)");
+		}
+		if (player.hasPermission("police.remove")) {
+			player.sendMessage("/police remove (username) (region)");
+		}
+		        player.sendMessage("/police unjail (username)");
+	}
+	
+}
+	
+if (args.length > 0) {
+
 if (sender instanceof Player) {
 Player player = (Player) sender;
 worker work = new worker();
@@ -77,7 +104,7 @@ if (args[0].equalsIgnoreCase("remove")) {
 if (work.isPoliceInGeneral(player.getUniqueId().toString(), player.getWorld().toString())) {
 	//Test if player is police
 
-if (args[0].equalsIgnoreCase("help") || args.length == 0) {
+if (args[0].equalsIgnoreCase("help")) {
 	player.sendMessage("[Police]");
 	player.sendMessage("To arrest someone simply attack them with a blaze rod");
 	if (player.hasPermission("police.add")) {
@@ -94,6 +121,8 @@ if (args[0].equalsIgnoreCase("help") || args.length == 0) {
 
 
 
+
+}
 
 }
 // If the command is used correctly return true
