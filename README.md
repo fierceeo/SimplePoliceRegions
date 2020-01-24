@@ -23,11 +23,12 @@ To jail a player, make sure you are a police and attack a player with a blaze ro
 
 
 **Permissions**
-
+  
   police.add, Allows you to add a police
 
   police.remove, Allows you to remove a police
-
+  
+  Note: you must give yourself these permissions as they are not default to op
 
 **Commands**
 
@@ -43,6 +44,6 @@ Requires Essentials to be setup and  a jail named “jail1”
 
 This plugin has uuid support
 
-Note: I will be adding support for multiple jails soon
+Note: I will be adding more features and support for multiple jails soon
 
 And again, thanks for checking this plugin out, I hope you enjoy it!
