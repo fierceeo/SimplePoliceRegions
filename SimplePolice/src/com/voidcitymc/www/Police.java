@@ -61,11 +61,11 @@ boolean done = false;
 
 
 
-//Add unjail
+//unjail
 
 if (work.isPoliceInGeneral(player.getUniqueId().toString(), player.getWorld().toString())) {
 	if (args[0].equalsIgnoreCase("unjail")) {
-		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "essentials:unjail "+player.getName());
+		Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "essentials:unjail "+args[1]);
 		done = true;
 	}
 }
