@@ -1,6 +1,6 @@
 name: SimplePoliceRegions
 author: ramdon_person
-main: com.voidcitymc.www.Main
+main: com.voidcitymc.plugins.SimplePoliceRegions.Main
 version: ${project.version}
 api-version: 1.15
 depend: [Essentials, WorldGuard, WorldEdit]
