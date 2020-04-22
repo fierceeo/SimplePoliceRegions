@@ -8,6 +8,8 @@ import org.bukkit.command.CommandSender;
 //import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 
+import sun.security.krb5.Config;
+
 public class Police implements CommandExecutor {
 
 // This method is called, when somebody uses our command
@@ -59,6 +61,14 @@ boolean done = false;
 // convert string to uuid: UUID returnUUID = UUID.fromString(uuidVarname);
 
 
+
+//police tp
+if (work.isPoliceInGeneral(player.getUniqueId().toString(), player.getWorld().toString())) {
+	if (args[0].equalsIgnoreCase("tp")) {
+		int MaxValTp = Main.getInstance().getConfig().getInt("MaxPoliceTp");
+		player.teleport(worker.policeTp(Bukkit.getPlayer(args[1]), MaxValTp));
+	}
+}
 
 
 //unjail

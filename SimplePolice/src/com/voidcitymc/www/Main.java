@@ -50,7 +50,10 @@ public void onEnable() {
         Metrics metrics = new Metrics(this);
 
 	getServer().getPluginManager().registerEvents(new PoliceListener(), this);
-	//create config;
+	//create config
+	this.getConfig().options().copyDefaults(true);
+	saveConfig();
+	//create datafile;
 	createData();
 	instance = this;
 	this.getCommand("police").setExecutor(new Police());
@@ -64,6 +67,7 @@ public void onDisable() {
 	System.out.println("Thanks for using ramdon_person's police plugin!");
 	System.out.println("-- Saving Data --");
 	this.SaveTheConfig();
+	saveConfig();
 	System.out.println("-- All data saved! --");
 }
 }

@@ -146,7 +146,7 @@ public static boolean checkIfPlayerIsPoliceInRegions(Player p) {
 	
 }
 
-public static boolean IsLocationSafe (Location loc1) {
+public static boolean isLocationSafe (Location loc1) {
 	//check if the location is safe to teleport to (air)
 	if (loc1.getBlock().getType().equals(Material.AIR)) {
 		//we know that the inital location is safe, so we need to check one block up
@@ -163,7 +163,7 @@ public static boolean IsLocationSafe (Location loc1) {
 	return false;
 }
 
-public static Location PoliceTp (Player player, int MaxValTp) {
+public static Location policeTp (Player player, int MaxValTp) {
 	Location LocP = player.getLocation();
 	//players x,y,z
 	int pX = LocP.getBlockX();
@@ -181,7 +181,7 @@ public static Location PoliceTp (Player player, int MaxValTp) {
     Location returnLoc = new Location(player.getWorld(), nX, nY, nZ);
     
     //keeps increasing y cord until location is safe
-    while (!IsLocationSafe(returnLoc)) {
+    while (!isLocationSafe(returnLoc)) {
     	nY = nY+1;
     	returnLoc = new Location(player.getWorld(), nX, nY, nZ);
     }
