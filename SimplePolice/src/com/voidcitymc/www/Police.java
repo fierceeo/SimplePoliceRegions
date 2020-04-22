@@ -70,6 +70,11 @@ if (work.isPoliceInGeneral(player.getUniqueId().toString(), player.getWorld().to
 	if (args[0].equalsIgnoreCase("tp")) {
 		int MaxValTp = Main.getInstance().getConfig().getInt("MaxPoliceTp");
 		player.teleport(worker.policeTp(Bukkit.getPlayer(args[1]), MaxValTp));
+		player.sendMessage("[Police] You have been teleported");
+		
+		//debug
+		player.sendMessage("Value in config" + MaxValTp);
+		//debug
 	}
 }
 
