@@ -1,4 +1,4 @@
-package com.voidcitymc.www;
+package com.voidcitymc.plugins.SimplePoliceRegions;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

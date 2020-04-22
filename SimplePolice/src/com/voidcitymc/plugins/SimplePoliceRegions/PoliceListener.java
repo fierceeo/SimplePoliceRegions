@@ -1,4 +1,4 @@
-package com.voidcitymc.www;
+package com.voidcitymc.plugins.SimplePoliceRegions;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

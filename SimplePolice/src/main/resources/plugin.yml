@@ -1,9 +1,10 @@
 name: SimplePoliceRegions
 author: ramdon_person
 main: com.voidcitymc.www.Main
-version: 1.0
+version: ${project.version}
 api-version: 1.15
 depend: [Essentials, WorldGuard, WorldEdit]
+website: https://plugins.voidcitymc.com
 commands:
    police:
       description: Your description

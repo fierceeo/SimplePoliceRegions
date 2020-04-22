@@ -1,15 +1,15 @@
-package com.voidcitymc.www;
+package com.voidcitymc.plugins.SimplePoliceRegions;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import com.voidcitymc.www.Metrics;
-
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import com.voidcitymc.plugins.SimplePoliceRegions.Metrics;
 
 public class Main extends JavaPlugin {
 private static Main instance;

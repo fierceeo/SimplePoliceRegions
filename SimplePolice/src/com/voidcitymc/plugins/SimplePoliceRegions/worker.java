@@ -3,7 +3,7 @@
    - player3+worldname = __global__, spawn, wild
 */
 
-package com.voidcitymc.www;
+package com.voidcitymc.plugins.SimplePoliceRegions;
 
 import java.util.ArrayList;
 import java.util.List;
