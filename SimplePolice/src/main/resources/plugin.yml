@@ -16,3 +16,6 @@ permissions:
   police.remove:
     description: Allows you to remove a police
     default: false
+  police.reload:
+    description: Allows you to reload the configfile
+    default: op

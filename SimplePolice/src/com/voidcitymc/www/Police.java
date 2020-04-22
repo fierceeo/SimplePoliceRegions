@@ -60,7 +60,10 @@ if (args.length > 1) {
 boolean done = false;
 // convert string to uuid: UUID returnUUID = UUID.fromString(uuidVarname);
 
-
+//reload config
+if (player.hasPermission("police.reload")) {
+	Main.getInstance().reloadConfig();
+}
 
 //police tp
 if (work.isPoliceInGeneral(player.getUniqueId().toString(), player.getWorld().toString())) {
