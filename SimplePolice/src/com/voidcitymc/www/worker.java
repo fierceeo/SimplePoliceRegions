@@ -171,8 +171,10 @@ public static Location policeTp (Player player, int MaxValTp) {
 	int pZ = LocP.getBlockZ();
 	
 	//generate a random number from 0 to the farthest /police tp value in config (MaxValTp)
-    int random1 = (int) Math.random() * MaxValTp;
-    int random2 = (int) Math.random() * MaxValTp;
+    double drandom1 = Math.random() * MaxValTp;
+    double drandom2 = Math.random() * MaxValTp;
+    int random1 = (int) Math.round(drandom1);
+    int random2 = (int) Math.round(drandom2);
 	
     int nX = pX+random1;
     int nY = pY;
